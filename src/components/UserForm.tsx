@@ -6,15 +6,15 @@ interface UserFormProps {
 }
 
 const UserForm = ({ onAddUser }: UserFormProps) => {
-  const [username, setUserName] = useState<string>("ddd");
-  const [nationality, setNationality] = useState<string>("eeee");
-  const [id, setId] = useState<number>();
+  const [username, setUserName] = useState("");
+  const [nationality, setNationality] = useState("");
 
-  const handelSubmit = (event: { preventDefault: () => void }) => {
+  const handelSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    onAddUser({ username, nationality });
-    // setUserName("");
-    // setNationality("");
+    onAddUser({username,nationality});
+
+    setUserName("");
+    setNationality("");
   };
 
   return (
@@ -24,38 +24,27 @@ const UserForm = ({ onAddUser }: UserFormProps) => {
           <h1 className="bg-black text-white text-2xl py-2 font-semibold">
             User Registration Form
           </h1>
+
           <div className="flex gap-4 flex-col mt-5">
-            <input
-              onChange={(e) => setId(Number(e.target.value))}
-              className="border h-8 px-2"
-              type="number"
-              name=""
-              id=""
-              value={id}
-              placeholder="Enter Id"
-            />
             <input
               onChange={(e) => setUserName(e.target.value)}
               className="border h-8 px-2"
               type="text"
-              name=""
-              id=""
               value={username}
               placeholder="User Name"
             />
+
             <input
               onChange={(e) => setNationality(e.target.value)}
               className="border h-8 px-2"
               type="text"
-              name=""
-              id=""
               value={nationality}
               placeholder="Nationality"
             />
           </div>
+
           <button
-            onClick={() => onAddUser}
-            className="bg-blue-600 text-white py-2 mt-4 px-4 w-40 rounded-md shadow-2xl "
+            className="bg-blue-600 text-white py-2 mt-4 px-4 w-40 rounded-md shadow-2xl"
             type="submit"
           >
             ADD USER

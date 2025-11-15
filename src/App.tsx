@@ -8,16 +8,20 @@ function App() {
   const [users, setUsers] = useState<UserType[]>([]);
 
   const addUser = (user: UserType) => {
-    user.id = users.length + 1
-    setUsers((prev) => [...prev, user]);
+    const newUser = { ...user, id: users.length + 1 };
+    setUsers((prev) => [...prev, newUser]);
   };
+
   return (
     <>
-        <h1 className=" text-white bg-black py-1 font-semibold text-xl">Users List:</h1>
-      <div className="flex flex-col">
-          <UserList user = {users}/>
+      <h1 className="text-white bg-black py-1 font-semibold text-xl">
+        Users List:
+      </h1>
+
+      <div className="flex flex-col gap-10">
+        <UserList user={users} />
         <UserForm onAddUser={addUser} />
-        </div>
+      </div>
     </>
   );
 }

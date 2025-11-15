@@ -6,9 +6,13 @@ interface UserListProps {
 
 const UserList = ({ user }: UserListProps) => {
   return (
-    <div className="grid grid-cols-3 mt-1">
+    <div>
       {user.map((u) => (
-        <p key={u.id}>{u.username} {u.nationality}</p>
+        <div key={u.id} className=" w-full grid grid-cols-3">
+            <p>{u.id}</p>
+          <p>{u.username}</p>
+          <p>{u.nationality}</p>
+        </div>
       ))}
     </div>
   );
