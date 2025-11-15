@@ -6,16 +6,15 @@ interface UserFormProps {
 }
 
 const UserForm = ({ onAddUser }: UserFormProps) => {
-  const [username, setUserName] = useState<string>("");
-  const [nationality, setNationality] = useState<string>("");
+  const [username, setUserName] = useState<string>("ddd");
+  const [nationality, setNationality] = useState<string>("eeee");
   const [id, setId] = useState<number>();
 
   const handelSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    onAddUser({ username, nationality, id: 0 });
-    setUserName("");
-    setNationality("");
-    setId(0);
+    onAddUser({ username, nationality });
+    // setUserName("");
+    // setNationality("");
   };
 
   return (
