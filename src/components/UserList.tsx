@@ -1,20 +1,16 @@
-import type { UserType } from "../types/UserType"
+import type { UserType } from "../types/UserType";
 
 interface UserListProps {
-    user:UserType;
+  user: UserType;
 }
-const UserList = ({user}:UserListProps) => {
-    
+const UserList = ({ user }: UserListProps) => {
   return (
-    <div className="flex justify-center">
-        
-    <div>
+      <div className="grid grid-cols-3 mt-5">
         <p>{user.id}</p>
         <p>{user.username}</p>
         <p>{user.nationality}</p>
-    </div>
-    </div>
-  )
-}
+      </div>
+  );
+};
 
-export default UserList
+export default UserList;

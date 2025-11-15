@@ -1,31 +1,34 @@
-
-import { useState } from 'react'
-import './App.css'
-import UserForm from './components/UserForm'
-import UserList from './components/UserList'
-import type { UserType } from './types/UserType'
+import { useState } from "react";
+import "./App.css";
+import UserForm from "./components/UserForm";
+import UserList from "./components/UserList";
+import type { UserType } from "./types/UserType";
 
 function App() {
-  const [users,setUsers] = useState<UserType[]>([])
+  const [users, setUsers] = useState<UserType[]>([]);
 
-  const addUser = (user:UserType)=>{
-    setUsers((prev)=>[...prev,user])
-  }
+  const addUser = (user: UserType) => {
+    setUsers((prev) => [...prev, user]);
+  };
   return (
     <>
-    <div className='flex flex-col gap-42'>
+        <h1 className=" text-white bg-black py-1 font-semibold text-xl">
+          Users List:
+        </h1>
+      <div className="flex flex-col">
+        <div>
+          {users.map((user) => (
+            <UserList user={user} key={user.id} />
+          ))}
+        </div>
 
-<h1 className=" text-white bg-black py-1 font-semibold text-xl">Users List:</h1>
-<div>
-{users.map((user)=>(
- <UserList user = {user} key={user.id}/>
-))}
-     
-</div>
-      <UserForm onAddUser = {addUser} />
-    </div>
+        <div className="mt-28">
+
+        <UserForm onAddUser={addUser} />
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
