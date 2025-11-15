@@ -7,7 +7,7 @@ import type { UserType } from "./types/UserType";
 function App() {
   const [users, setUsers] = useState<UserType[]>([]);
 
-  const addUser = (user: UserType) => {
+  const handelAddUser = (user: UserType) => {
     const newUser = { ...user, id: users.length + 1 };
     setUsers((prev) => [...prev, newUser]);
   };
@@ -20,7 +20,7 @@ function App() {
 
       <div className="flex flex-col gap-10">
         <UserList user={users} />
-        <UserForm onAddUser={addUser} />
+        <UserForm onAddUser={handelAddUser} />
       </div>
     </>
   );
