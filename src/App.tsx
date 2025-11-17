@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+
 import UserForm from "./components/UserForm";
 import UserList from "./components/UserList";
 import type { UserType } from "./types/UserType";
@@ -10,7 +11,7 @@ function App() {
   const handelAddUser = (user: UserType) => {
     const newUser = { ...user, id: users.length + 1 };
     setUsers((prev) => [...prev, newUser]);
-  };
+  }; // <-- FIXED: This brace was missing
 
   return (
     <>
